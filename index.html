@@ -217,6 +217,22 @@
             this.updateScoreText();
           });
 
+          //FS
+          this.fullscreenBtn = this.add.text(600, 20, "⛶", {
+    fontSize: "60px",
+    color: "#000fff",
+})
+.setScrollFactor(0)
+.setInteractive();
+
+this.fullscreenBtn.on("pointerup", () => {
+    if (this.scale.isFullscreen) {
+        this.scale.stopFullscreen();
+    } else {
+        this.scale.startFullscreen();
+    }
+});
+
           // YELLOW COINS (+37)
           this.yellowCoins = this.physics.add.group();
           for (let x = 350; x < 3800; x += 450) {
@@ -566,6 +582,8 @@
           // OPTIONAL: keep HUD fixed (already scrollFactor 0)
         }
 
+        
+
         endGame(msg) {
           if (this.ending) return;
           this.ending = true;
@@ -651,6 +669,7 @@
       };
 
       new Phaser.Game(config);
+      
     </script>
   </body>
 </html>
